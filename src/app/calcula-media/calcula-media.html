@@ -1,0 +1,28 @@
+<h1>Calcular a média de uma disciplina</h1>
+<form >
+    <div>
+        <label for="b1">bim 1</label>
+        <input type="number" id="b1" #b1>
+    </div>
+        <div>
+        <label for="b2">bim 2</label>
+        <input type="number" id="b2" #b2>
+    </div>
+        <div>
+        <label for="b3">bim 3</label>
+        <input type="number" id="b3" #b3>
+    </div>
+        <div>
+        <label for="b4">bim 4</label>
+        <input type="number" id="b4" #b4>
+    </div>
+    <div>
+        <input type="button" value="Calcular" (click)="calcularMediaParcial(+b1.value, +b2.value, +b3.value, +b4.value)">
+    </div>
+</form>
+
+@if (mediaParcial) {
+    <div>
+    <p>Média Parcial: {{ mediaParcial }}</p>
+</div>
+}

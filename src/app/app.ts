@@ -1,9 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CalculaMedia } from './calcula-media/calcula-media';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [CalculaMedia],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
