@@ -17,12 +17,38 @@
         <input type="number" id="b4" #b4>
     </div>
     <div>
+        <div>
+        <label for="exame">Exame</label>
+        <input type="number" id="exame" #exame>
+    </div>
+    <div>
         <input type="button" value="Calcular" (click)="calcularMediaParcial(+b1.value, +b2.value, +b3.value, +b4.value)">
     </div>
+    <div>
+        <input type="button" value="Calcular Média Final" (click)="calcularMediaFinal(+mediaParcial.value, +exame.value)">
+    </div>
+            
 </form>
 
 @if (mediaParcial) {
     <div>
     <p>Média Parcial: {{ mediaParcial }}</p>
+</div>
+}
+
+@if (mediaFinal) {
+    <div>
+    <p>Média Final: {{ mediaFinal }}</p>
+</div>
+}
+
+@if (mediaFinal >= 6) {
+    <div>
+    <p>Aluno Aprovado</p>
+</div>
+}   
+@if (mediaFinal < 6) {
+    <div>
+    <p>Aluno Reprovado</p>
 </div>
 }
