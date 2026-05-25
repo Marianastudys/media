@@ -1,64 +1,109 @@
 <div class="container">
 
-    <h1>Calcular a média de uma disciplina</h1>
+  <h1>Calcula a média de uma disciplina</h1>
+
+  <form>
+    <div class="card">
+
+      <div>
+        <label for="b1">Bim 1</label>
+        <input id="b1" type="number" #b1>
+      </div>
+
+      <div>
+        <label for="b2">Bim 2</label>
+        <input id="b2" type="number" #b2>
+      </div>
+
+      <div>
+        <label for="b3">Bim 3</label>
+        <input id="b3" type="number" #b3>
+      </div>
+
+      <div>
+        <label for="b4">Bim 4</label>
+        <input id="b4" type="number" #b4>
+      </div>
+
+      <div class="botao">
+        <input
+          type="button"
+          value="Calcular"
+          (click)="calcularMediaParcial(
+            +b1.value,
+            +b2.value,
+            +b3.value,
+            +b4.value
+          )">
+      </div>
+
+    </div>
+  </form>
+
+  @if (mediaParcial !== undefined) {
+
+    <div class="resultado">
+
+      <p>
+        Média parcial:
+        {{ mediaParcial.toFixed(1) }}
+      </p>
+
+    </div>
+
+  }
+
+  @if (mediaParcial !== undefined && mediaParcial < 60) {
 
     <form>
 
-        <div class="campo">
-            <label for="b1">1º Bimestre</label>
-            <input type="number" id="b1" #b1>
+      <div class="card">
+
+        <div>
+          <label for="Fn">
+            Nota da Avaliação Final
+          </label>
+
+          <input
+            id="Fn"
+            type="number"
+            #Fn>
         </div>
 
-        <div class="campo">
-            <label for="b2">2º Bimestre</label>
-            <input type="number" id="b2" #b2>
-        </div>
+        <div class="botao">
 
-        <div class="campo">
-            <label for="b3">3º Bimestre</label>
-            <input type="number" id="b3" #b3>
-        </div>
-
-        <div class="campo">
-            <label for="b4">4º Bimestre</label>
-            <input type="number" id="b4" #b4>
-        </div>
-
-        <div class="campo">
-            <label for="exame">Avaliação Final</label>
-            <input type="number" id="exame" #exame>
-        </div>
-
-        <div class="botoes">
-
-            <input type="button" value="Calcular Média Parcial"
-                (click)="calcularMediaParcial(+b1.value, +b2.value, +b3.value, +b4.value)">
-
-            <input type="button" value="Calcular Média Final" (click)="calcularMediaFinal(exame.value)">
+          <input
+            type="button"
+            value="Calcular Final"
+            (click)="calcularMediaFinal(+Fn.value)">
 
         </div>
+
+      </div>
 
     </form>
 
-    @if (mediaParcial !== undefined) {
-    <div class="resultado">
-        <p>Média Parcial: {{ mediaParcial.toFixed(1) }}</p>
-    </div>
-    }
+  }
 
-    @if (mediaFinal !== undefined) {
+  @if (mediaFinal !== undefined) {
+
     <div class="resultado">
 
-        <p>Média Final: {{ mediaFinal.toFixed(1) }}</p>
+      <p>
+        Média final:
+        {{ mediaFinal.toFixed(1) }}
+      </p>
 
-        @if (mediaFinal >= 60) {
-        <p class="aprovado">Aluno Aprovado</p>
-        }
+      <p
+        [class.aprovado]="situacao === 'Aprovado'"
+        [class.reprovado]="situacao === 'Reprovado'">
 
-        @if (mediaFinal < 60) { <p class="reprovado">Aluno Reprovado</p>
-            }
+        Aluno(a): {{ situacao }}
+
+      </p>
 
     </div>
-    }
+
+  }
 
 </div>

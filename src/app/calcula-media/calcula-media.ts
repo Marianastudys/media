@@ -4,12 +4,13 @@ import { Component } from '@angular/core';
   selector: 'app-calcula-media',
   imports: [],
   templateUrl: './calcula-media.html',
-  styleUrl: './calcula-media.scss',
+  styleUrls: ['./calcula-media.scss'],
 })
 export class CalculaMedia {
 
   protected mediaParcial: number | undefined;
   protected mediaFinal: number | undefined;
+  protected situacao: string = '';
 
   calcularMediaParcial(
     b1: number,
@@ -20,21 +21,37 @@ export class CalculaMedia {
 
     this.mediaParcial =
       (b1 * 2 + b2 * 2 + b3 * 3 + b4 * 3) / 10;
-  }
 
-  calcularMediaFinal(exame: string) {
+    
+    if (this.mediaParcial >= 60) {
 
-  if (this.mediaParcial !== undefined) {
-
-    if (exame.trim() === '') {
-
+      
       this.mediaFinal = this.mediaParcial;
 
-    } else {
+      this.situacao = 'Aprovado';
+    }
+    else {
 
-      this.mediaFinal =
-        (this.mediaParcial + Number(exame)) / 2;
+      
+      this.mediaFinal = undefined;
+
+      this.situacao = 'Avaliação Final';
     }
   }
-}
+
+  calcularMediaFinal(fn: number) {
+
+    if (this.mediaParcial !== undefined) {
+
+      this.mediaFinal =
+        (this.mediaParcial + fn) / 2;
+
+      if (this.mediaFinal >= 60) {
+        this.situacao = 'Aprovado';
+      }
+      else {
+        this.situacao = 'Reprovado';
+      }
+    }
+  }
 }
