@@ -1,31 +1,31 @@
 <div class="container">
 
-  <h1>Calcula a média de uma disciplina</h1>
+  <h1 class="text-center">Calcula a média de uma disciplina</h1>
 
   <form>
-    <div class="card">
+    <div class="mb-3" >
 
       <div>
-        <label for="b1">Bim 1</label>
-        <input id="b1" type="number" #b1>
+        <label for="b1" class="form-label">Bim 1</label>
+        <input id="b1" type="number" class="form-control" #b1>
       </div>
 
       <div>
-        <label for="b2">Bim 2</label>
-        <input id="b2" type="number" #b2>
+        <label for="b2" class="form-label">Bim 2</label>
+        <input id="b2" type="number" class="form-control" #b2>
       </div>
 
       <div>
-        <label for="b3">Bim 3</label>
-        <input id="b3" type="number" #b3>
+        <label for="b3" class="form-label">Bim 3</label>
+        <input id="b3" type="number" class="form-control" #b3>
       </div>
 
       <div>
-        <label for="b4">Bim 4</label>
-        <input id="b4" type="number" #b4>
+        <label for="b4" class="form-label">Bim 4</label>
+        <input id="b4" type="number" class="form-control" #b4>
       </div>
 
-      <div class="botao">
+      <div class="botao" class="btn btn-primary">
         <input
           type="button"
           value="Calcular"
@@ -44,7 +44,7 @@
 
     <div class="resultado">
 
-      <p>
+      <p class="alert alert-success">
         Média parcial:
         {{ mediaParcial.toFixed(1) }}
       </p>
@@ -95,7 +95,7 @@
       </p>
 
       <p
-        [class.aprovado]="situacao === 'Aprovado'"
+        [class.aprovado]="situacao === 'Aprovado' "
         [class.reprovado]="situacao === 'Reprovado'">
 
         Aluno(a): {{ situacao }}
